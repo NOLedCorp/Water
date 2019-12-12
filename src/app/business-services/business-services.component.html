@@ -1,5 +1,4 @@
 <h4 class="page-min-head">Услуги для организаций</h4>
-
 <div class="section">
   <div class="section-header" (click)="show('first')"><span>Подготовка технических условий и разрешений</span><i class="fas fa-caret-down"></i></div>
   <div class="section-body" *ngIf="this.shows.first">
@@ -31,7 +30,6 @@
       <div><i></i><span>После оплаты/заключения договора диспетчер организует отключение/подключение на нужную Вам дату.</span></div>
       <div class="mt-5"><i style="background-image: url(../../assets/images/pdf.png)"></i><span>ЗДЕСЬ МОЖНО СКАЧАТЬ И РАСПЕЧАТАТЬ <b class="text-primary"><a href="http://vdknf.ru/water/Docs/services/kalkulaziya_22.pdf" target="_blank">КАЛЬКУЛЯЦИЮ</a></b></span></div>
     </ul>
-    
   </div>
 </div>
 <div class="section">
@@ -57,9 +55,7 @@
       <li>Подписать акт отбора проб;</li>
       <li>После 15 рабочих дней с момента отбора проб обратиться в МУП «Водоканал» и получить <b><a href="http://vdknf.ru/water/Docs/services/protokol.xlsx"  target="_blank">протокол исследования воды</a></b>, счет-фактуру, подписать акт выполненных работ.</li>
     </ol>
-    
   </div>
-  
 </div>
 <div class="section" >
   <div class="section-header" (click)="show('sideWeb')"><span>Для подготовки ПРОЕКТОВ на наружные и внутренние сети водоснабжения и водоотведения</span><i class="fas fa-caret-down"></i></div>
@@ -87,7 +83,6 @@
       </span>
       <div class="mt-5"><i style="background-image: url(../../assets/images/pdf.png)"></i><span>ЗДЕСЬ МОЖНО СКАЧАТЬ И РАСПЕЧАТАТЬ <b class="text-primary"><a href="http://vdknf.ru/water/Docs/services/SOGLASOVANO.rar" target="_blank">АЛГОРИТМ И ЗАЯВЛЕНИЕ на СОГЛАСОВАНИЕ</a></b></span></div>
     </ul>
-    
   </div>
 </div>
 <div class="section">
@@ -111,7 +106,24 @@
 <div class="section">
   <div class="section-header" (click)="show('nineth')"><span>Подготовка справок / информации:</span><i class="fas fa-caret-down"></i></div>
   <div class="section-body" *ngIf="this.shows.nineth">
-    <p><i>Для заключения договора Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">АО</a></b>(абонентский отдел) МУП «Водоканал»</i></p>
+    <p><i>Для заключения договора Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">АО</a></b> (абонентский отдел) МУП «Водоканал»</i></p>
   </div>
 </div>
-
+<div class="section">
+  <div class="section-header" (click)="show('tenth')"><span>Установка станций водоподготовки для дополнительной очистки воды</span><i class="fas fa-caret-down"></i></div>
+  <div class="section-body" *ngIf="this.shows.tenth">
+    <p><i>Для установки станций водоподготовки для дополнительной очистки воды Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">ПТО</a></b> (производственно-технический отдел) МУП «Водоканал»</i></p>
+  </div>
+</div>
+<div class="section">
+  <div class="section-header" (click)="show('eleventh')"><span>Обслуживание локальных очистных сооружений  ("Танк", "Топаз" и т.д.)</span><i class="fas fa-caret-down"></i></div>
+  <div class="section-body" *ngIf="this.shows.eleventh">
+    <p><i>Для обслуживания локальных очистных сооружений Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">ПТО</a></b> (производственно-технический отдел) МУП «Водоканал»</i></p>
+  </div>
+</div>
+<div class="section">
+  <div class="section-header" (click)="show('twelveth')"><span>Осуществление ремонта насосного оборудования водозаборных узлов КНС</span><i class="fas fa-caret-down"></i></div>
+  <div class="section-body" *ngIf="this.shows.twelveth">
+    <p><i>Для осуществления ремонта насосного оборудования водозаборных узлов КНС Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">ПТО</a></b> (производственно-технический отдел) МУП «Водоканал»</i></p>
+  </div>
+</div>

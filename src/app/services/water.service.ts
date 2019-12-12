@@ -40,8 +40,8 @@ export class WaterService{
       return this.http.get<Prop[]>(this.baseUrl + 'Key=get-props');
     }
 
-    getDocs(types){
-      return this.http.post<any>(this.baseUrl + 'Key=get-docs', types);
+    getDocs(){
+      return this.http.get<Doc[]>(this.baseUrl + 'Key=get-docs');
     }
 
     getTypeDocs(types){
@@ -83,6 +83,14 @@ export class WaterService{
         reportProgress:true,
         observe:'events'
       });
+    }
+
+    addDocType(type){
+      return this.http.post<DocType>(this.baseUrl + 'Key=add-doc-type&Login='+encodeURIComponent(this.us.user.Login)+'&Password='+encodeURIComponent(this.us.user.Password), type);
+    }
+
+    updateDocType(type){
+      return this.http.post<number>(this.baseUrl + 'Key=update-doc-type&Login='+encodeURIComponent(this.us.user.Login)+'&Password='+encodeURIComponent(this.us.user.Password), type);
     }
 
     addNews(news){

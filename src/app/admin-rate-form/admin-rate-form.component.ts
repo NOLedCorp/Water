@@ -59,7 +59,7 @@ export class AdminRateFormComponent extends AddService implements OnInit {
 
   setPrices(year: number){
     this.prices = this.rate.Prices.filter(p => {
-      return p.DateStart.getFullYear() === year || p.DateFinish.getFullYear() === year
+      return p.DateStart.getFullYear() === +year || p.DateFinish.getFullYear() === +year
     })
   }
 
@@ -115,11 +115,16 @@ export class AdminRateFormComponent extends AddService implements OnInit {
       })
     }
     else{
-      this._ws.addPrice({PriceTypeId: this.rate.Id, ...this.v}).subscribe(id => {
+      this._ws.addPrice({
+        PriceTypeId: this.rate.Id,
+        DateStart: this._formatDate(this.v['DateStart']),
+        DateFinish: this._formatDate(this.v['DateFinish']),
+        Price: this.v['Price']
+      }).subscribe(id => {
         this.rate.Prices.push({
           Id: id,
           PriceTypeId: this.rate.Id,
-          ...this.addForm.value
+          ...this.v
         });
         this.addForm.reset();
         this.setPrices(this.yearControl.value);

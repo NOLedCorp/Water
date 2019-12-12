@@ -28,6 +28,7 @@
         <small  class="form-text text-danger" *ngIf="submitted && f.Description.errors">Введите описание</small>
     </div>
     <button [disabled]="addForm.invalid" class="btn btn-primary" *ngIf="!item || upd_length" (click)="save()">Сохранить</button>
+    <button class="btn btn-link" *ngIf="item" (click)="clear()">Очистить</button>
     <button class="btn btn-link text-danger" *ngIf="item" (click)="remove()">Удалить</button>
   </form>
 </div>

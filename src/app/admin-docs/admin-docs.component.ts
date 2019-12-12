@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WaterService } from '../services/water.service';
-import { DocTypes, Doc, UploadTypes } from '../services/models';
+import { DocTypes, Doc, UploadTypes, DocType } from '../services/models';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '@ckeditor/ckeditor5-build-classic/build/translations/ru';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -21,9 +21,7 @@ export class AdminDocsComponent extends AddService implements OnInit {
   description = '';
   tpattern=/(\.docx|\.pdf|\.txt|\.doc|\.xlsx|\.xls|\.zip|\.7z|\.rar)$/i;
   ipattern=/(\.png|\.jpg)$/i;
-  docTypes = Object.keys(DocTypes).map(t => {
-    return {Id: DocTypes[t], Name: DocTypes[t].toLowerCase()}
-  });
+  docTypes: DocType;
   public Editor = ClassicEditor;
   
   public config = {
@@ -39,13 +37,16 @@ export class AdminDocsComponent extends AddService implements OnInit {
    }
 
   ngOnInit() {
-    this._ws.getTypeDocs(<DocTypes[]>Object.values(DocTypes)).subscribe(docs => {
-      this.items = docs;
+    this._ws.getDocTypes().subscribe(types => {
+      this.docTypes = types;
+      this._ws.getDocs().subscribe(docs => {
+        this.items = docs.reverse();
+      })
     })
 
     this.addForm = this._fb.group({
       Name:[null, Validators.required],
-      Type:[null, Validators.required],
+      TypeId:[null, Validators.required],
       IsImportant:[false],
       Description: [null],
       Image:[null, [Validators.required, WaterValidators.FileNameValidator(this.ipattern)]],
@@ -61,7 +62,7 @@ export class AdminDocsComponent extends AddService implements OnInit {
   }
   public setForm(id){
     this.item = this.items.find(x => x.Id == id);
-    //this.item.IsImportant = this.item.IsImportant === '1';
+    this.item.IsImportant = this.item.IsImportant === '1';
     this.addForm.patchValue(this.item);
   }
 
@@ -79,8 +80,7 @@ export class AdminDocsComponent extends AddService implements OnInit {
 
   private _add(): void{
     this._ls.showLoad = true;
-    console.log(this.v);
-    this._ws.addDoc({Name: this.v.Name, Type: this.v.Type, IsImportant: this.v.IsImportant, Description: this.v.Description}).subscribe(docId => {
+    this._ws.addDoc({Name: this.v.Name, TypeId: this.v.TypeId, IsImportant: this.v.IsImportant, Description: this.v.Description}).subscribe(docId => {
       const formData = new FormData();
       formData.append('Image', this.v.Image);
       formData.append('Document', this.v.Document);
@@ -89,13 +89,12 @@ export class AdminDocsComponent extends AddService implements OnInit {
           this._ls.load = Math.round(event.loaded/event.total * 100);
         }
         else if(event.type == HttpEventType.Response){
-          console.log(event.body);
           this.items.unshift({
             Id: docId, 
             Image: event.body[0].Image, 
             Document: event.body[0].Document, 
             Name: this.v.Name, 
-            Type: this.v.Type, 
+            TypeId: this.v.TypeId, 
             IsImportant: this.v.IsImportant,
             Description: this.v.Description
           });
@@ -137,10 +136,8 @@ export class AdminDocsComponent extends AddService implements OnInit {
             message: "Файлы успешно загружены"
           })
         }
-        
       })
     }
-    
   }
 
   remove(){
@@ -160,6 +157,10 @@ export class AdminDocsComponent extends AddService implements OnInit {
     })
   }
 
+  clear(){
+    this.submitted = false;
+    this.addForm.reset();
+    this.item = null;
+    document.getElementsByTagName('prog-select')[0].getElementsByTagName("input")[0].value = '';
+  }
 }
-
-

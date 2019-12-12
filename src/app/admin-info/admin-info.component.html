@@ -1,0 +1,16 @@
+<div class="container" *ngIf="items">
+    <h4 class="page-min-head">Добавление и редактирование разделов вкладки "Информация"</h4>
+    <div class="form-group">
+      <label>Выберите раздел</label>
+      <prog-select [items]="items" (change)="setForm($event)"></prog-select>
+    </div>
+    <form [formGroup]="addForm" class="border border-primary p-5">
+      <div class="form-group">
+        <label [ngClass]="{'text-danger':(submitted && f.Name.errors)}">Название</label>
+        <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" formControlName="Name" class="form-control" type="text" >
+      </div>
+      <button [disabled]="addForm.invalid" class="btn btn-primary" *ngIf="!item || upd_length" (click)="save()">Сохранить</button>
+      <button class="btn btn-link" *ngIf="item" (click)="clear()">Очистить</button>
+      <button class="btn btn-link text-danger" *ngIf="item" (click)="remove()">Удалить</button>
+    </form>
+  </div>

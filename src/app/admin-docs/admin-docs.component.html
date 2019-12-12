@@ -25,7 +25,7 @@
     </div>
     <div class="form-group">
       <label>Тип документа</label>
-      <prog-select formControlName="Type" [items]="docTypes" [search]="false"></prog-select>
+      <prog-select formControlName="TypeId" [items]="docTypes" [search]="false"></prog-select>
     </div>
     <div class="form-group form-check">
       <input type="checkbox" class="form-check-input" formControlName="IsImportant" id="importantCheck">
@@ -37,6 +37,7 @@
         <small  class="form-text text-danger" *ngIf="submitted && f.Description.errors">Введите описание</small>
     </div>
     <button [disabled]="addForm.invalid" class="btn btn-primary" *ngIf="!item || upd_length" (click)="save()">Сохранить</button>
+    <button class="btn btn-link" *ngIf="item" (click)="clear()">Очистить</button>
     <button class="btn btn-link text-danger" *ngIf="item" (click)="remove()">Удалить</button>
   </form>
 </div>

@@ -184,6 +184,13 @@ export class AdminNewsComponent extends AddService implements OnInit {
     }
   }
 
+  clear(){
+    this.submitted = false;
+    this._initForm();
+    this.item = null;
+    document.getElementsByTagName('prog-select')[0].getElementsByTagName("input")[0].value = '';
+  }
+
   removeImg(i){
     (<FormArray>this.addForm.get('Image')).removeAt(i);
   }

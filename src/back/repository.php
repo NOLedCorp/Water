@@ -215,8 +215,13 @@ class DataBase {
     
     public function getDocTypes($info){
         $info = ($info === 'true' OR $info === true);
-        $sth = $this->db->prepare("SELECT * FROM doctypes WHERE Info=?");
-        $sth->execute(array((bool)$info));
+        if ($info){
+            $sth = $this->db->prepare("SELECT * FROM doctypes WHERE Info=?");
+            $sth->execute(array((bool)$info));
+        }
+        else{
+            $sth = $this->db->query("SELECT * FROM doctypes");
+        }
         $sth->setFetchMode(PDO::FETCH_CLASS, 'DocType');
         return $sth->fetchAll();
     }
@@ -587,6 +592,32 @@ class DataBase {
             return $this->db->lastInsertId();
         }else{
             return null;
+        }
+    }
+    
+   public function addDocType($l, $p, $type){
+        if($this->checkAdmin($l, $p)){
+            $res = $this->genInsertQuery($type,"doctypes");
+            $s = $this->db->prepare($res[0]);
+            if($res[1][0]!=null){
+                $s->execute($res[1]);
+            }
+            return $this->db->lastInsertId();
+        }else{
+            return null;
+        }
+    }
+    
+    public function updateDocType($l, $p, $type){
+        if($this->checkAdmin($l, $p)){
+            $id = $type['Id'];
+            unset($type['Id']);
+            $a = $this->genUpdateQuery(array_keys($type), array_values($type), "doctypes", $id);
+            $s = $this->db->prepare($a[0]);
+            $s->execute($a[1]);
+            return true;
+        }else{
+            return false;
         }
     }
     

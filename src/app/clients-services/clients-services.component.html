@@ -28,7 +28,6 @@
       <div><i></i><span>После оплаты/заключения договора диспетчер организует отключение/подключение на нужную Вам дату.</span></div>
       <div class="mt-5"><i style="background-image: url(../../assets/images/pdf.png)"></i><span>ЗДЕСЬ МОЖНО СКАЧАТЬ И РАСПЕЧАТАТЬ <b class="text-primary"><a href="http://vdknf.ru/water/Docs/services/kalkulaziya_22.pdf" target="_blank">КАЛЬКУЛЯЦИЮ</a></b></span></div>
     </ul>
-    
   </div>
 </div>
 <div class="section" >
@@ -57,7 +56,6 @@
       </span>
       <div class="mt-5"><i style="background-image: url(../../assets/images/pdf.png)"></i><span>ЗДЕСЬ МОЖНО СКАЧАТЬ И РАСПЕЧАТАТЬ <b class="text-primary"><a href="http://vdknf.ru/water/Docs/services/SOGLASOVANO.rar" target="_blank">АЛГОРИТМ И ЗАЯВЛЕНИЕ на СОГЛАСОВАНИЕ</a></b></span></div>
     </ul>
-    
   </div>
 </div>
 <div class="section">
@@ -83,8 +81,23 @@
       <li>Подписать акт отбора проб;</li>
       <li>После 15 рабочих дней с момента отбора проб обратиться в МУП «Водоканал» и получить <b><a href="http://vdknf.ru/water/Docs/services/protokol.xlsx"  target="_blank">протокол исследования воды</a></b>, счет-фактуру, подписать акт выполненных работ.</li>
     </ol>
-    
   </div>
-  
 </div>
-
+<div class="section">
+  <div class="section-header" (click)="show('fiveth')"><span>Установка станций водоподготовки для дополнительной очистки воды</span><i class="fas fa-caret-down"></i></div>
+  <div class="section-body" *ngIf="this.shows.fiveth">
+    <p><i>Для установки станций водоподготовки для дополнительной очистки воды Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">ПТО</a></b> (производственно-технический отдел) МУП «Водоканал»</i></p>
+  </div>
+</div>
+<div class="section">
+  <div class="section-header" (click)="show('sixth')"><span>Обслуживание локальных очистных сооружений  ("Танк", "Топаз" и т.д.)</span><i class="fas fa-caret-down"></i></div>
+  <div class="section-body" *ngIf="this.shows.sixth">
+    <p><i>Для обслуживания локальных очистных сооружений Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">ПТО</a></b> (производственно-технический отдел) МУП «Водоканал»</i></p>
+  </div>
+</div>
+<div class="section">
+  <div class="section-header" (click)="show('seventh')"><span>Осуществление ремонта насосного оборудования водозаборных узлов КНС</span><i class="fas fa-caret-down"></i></div>
+  <div class="section-body" *ngIf="this.shows.seventh">
+    <p><i>Для осуществления ремонта насосного оборудования водозаборных узлов КНС Вам необходимо обратиться в <b class="text-primary-dark"><a routerLink="/contacts">ПТО</a></b> (производственно-технический отдел) МУП «Водоканал»</i></p>
+  </div>
+</div>

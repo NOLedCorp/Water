@@ -62,6 +62,14 @@ if(isset($_GET['Key']))
             $b = json_decode(file_get_contents('php://input'), true);
             echo json_encode($ctxt->updUrl($_GET['Login'], $_GET['Password'], $b));
             break;
+        case 'add-doc-type':
+            $b = json_decode(file_get_contents('php://input'), true);
+            echo json_encode($ctxt->addDocType($_GET['Login'], $_GET['Password'], $b));
+            break;
+        case 'update-doc-type':
+            $b = json_decode(file_get_contents('php://input'), true);
+            echo json_encode($ctxt->updateDocType($_GET['Login'], $_GET['Password'], $b));
+            break;
         case 'add-doc':
             $b = json_decode(file_get_contents('php://input'), true);
             echo json_encode($ctxt->addDoc($_GET['Login'], $_GET['Password'], $b));

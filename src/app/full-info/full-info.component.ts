@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { WaterService } from '../services/water.service';
 import { LoadService } from '../services/load.service';
 import { Doc, DocTypes, DocType } from '../services/models';
@@ -21,7 +21,6 @@ export class FullInfoComponent implements OnInit {
    }
 
   ngOnInit() {
-    
     this.ls.showLoad = true;
     this.ws.getDocTypes(true).subscribe(type=>{
       type.forEach(el => {
@@ -34,7 +33,6 @@ export class FullInfoComponent implements OnInit {
         this.ls.showLoad = false;
       })
     });
-
   }
 
   go(param){

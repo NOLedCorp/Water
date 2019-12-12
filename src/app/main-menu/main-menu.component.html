@@ -3,10 +3,10 @@
   <div>
     <div class="menu-top">
         <div class="d-flex align-items-center justify-content-between">
-            <fieldset class="d-flex">
-                <input type="text" class="form-control" placeholder="Поиск по сайту" (keydown)="searchBtn($event,srch.value)" #srch>
-                <button class="btn" (click)="search(srch.value)"><i class="fas fa-search" aria-hidden="true"></i></button>
-            </fieldset>
+          <fieldset class="d-flex">
+            <input type="text" class="form-control" placeholder="Поиск по сайту" (keydown)="searchBtn($event,srch.value)" #srch>
+            <button class="btn" (click)="search(srch.value)"><i class="fas fa-search" aria-hidden="true"></i></button>
+          </fieldset>
         </div>
       <div class="menu-btn" (click)="show()">
         <span></span>

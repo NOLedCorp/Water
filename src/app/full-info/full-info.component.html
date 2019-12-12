@@ -1,14 +1,17 @@
 <div class="container">
     <h3 class="page-head">Раскрытие информации</h3>
     <div class="d-flex full-info">
-        <div class="d-flex align-items-start clients">
-            <nav id="navbar-example2" class="menu">
-              <div class="menu-item" [ngClass]="{'active': type==curType}" *ngFor="let type of docTypes" (click)="go(type)">
-                {{types[type]}}
-              </div>
-              <div class="menu-item" [ngClass]="{'active': 'sales'==curType}" (click)="go('sales')">
-                Закупки
-              </div>
+        <div class="d-flex align-items-start clients" id="menu-cont">
+          <nav id="navbar-example2" class="menu">
+            <div class="menu-item" [ngClass]="{'active': type==curType}" *ngFor="let type of docTypes" (click)="go(type)">
+              {{types[type]}}
+            </div>
+            <div class="menu-item" [ngClass]="{'active': 'info'==curType}" (click)="go('info')">
+              Раскрытие информации
+            </div>
+            <div class="menu-item" [ngClass]="{'active': 'sales'==curType}" (click)="go('sales')">
+              Закупки
+            </div>
           </nav>
         </div>
         <div data-spy="scroll" data-target="#navbar-example2" class="docs" *ngIf="docs" data-offset="0">
@@ -25,6 +28,14 @@
                   </div>
                 </div>
             </div>
+            <h4 class="page-min-head" id="info">Раскрытие информации</h4>
+            <div class="item">
+              <div class="image" >
+                <a target="blanc" href="http://ri.eias.ru/"></a>
+                <img src="../../assets/images/EIAS.png" alt="Раскрытие информации">
+              </div>
+              <h5 ><a href="http://ri.eias.ru/">Раскрытие информации</a></h5>
+            </div>
             <h4 class="page-min-head" id="sales">Закупки</h4>
             <div class="item">
               <div class="image" >
@@ -33,7 +44,6 @@
               </div>
               <h5 ><a href="http://zakupki.gov.ru/epz/order/quicksearch/search_eis.html?searchString=5030015500&strictEqual=on&pageNumber=1&sortDirection=false&recordsPerPage=_10&showLotsInfoHidden=false&fz44=on&fz223=on&ppRf615=on&af=on&ca=on&pc=on&pa=on&currencyId=-1&regionDeleted=false&sortBy=UPDATE_DATE">Закупки и конкурсные процедуры</a></h5>
             </div>
-            
           </div>
         
     </div>

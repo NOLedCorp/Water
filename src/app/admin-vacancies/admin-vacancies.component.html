@@ -50,6 +50,7 @@
       <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" formControlName="Country" class="form-control" type="text" >
     </div>
     <button [disabled]="addForm.invalid" class="btn btn-primary" *ngIf="!item || upd_length" (click)="save()">Сохранить</button>
+    <button class="btn btn-link" *ngIf="item" (click)="clear()">Очистить</button>
     <button class="btn btn-link text-danger" *ngIf="item" (click)="remove()">Удалить</button>
   </form>
 </div>

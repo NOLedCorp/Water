@@ -25,6 +25,7 @@ import { AdminRatesComponent } from './admin-rates/admin-rates.component';
 import { AdminContactsComponent } from './admin-contacts/admin-contacts.component';
 import { VacanciesComponent } from './vacancies/vacancies.component';
 import { AdminVacanciesComponent } from './admin-vacancies/admin-vacancies.component';
+import { AdminInfoComponent } from './admin-info/admin-info.component';
 
 const clientsRoutes: Routes = [
   {path:'', component:ClientsServicesComponent},
@@ -39,7 +40,8 @@ const adminRoutes: Routes = [
   {path:'admin-docs', component: AdminDocsComponent},
   {path:'admin-rates', component: AdminRatesComponent},
   {path:'admin-contacts', component: AdminContactsComponent},
-  {path:'admin-vacancies', component: AdminVacanciesComponent}
+  {path:'admin-vacancies', component: AdminVacanciesComponent},
+  {path:'admin-info', component: AdminInfoComponent}
 ];
 
 const servicesRoutes: Routes = [
